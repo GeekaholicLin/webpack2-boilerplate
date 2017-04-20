@@ -1,0 +1,129 @@
+//#configuring ESLint
+//http://eslint.org/docs/user-guide/configuring
+//http://eslint.cn/docs/user-guide/configuring
+{
+  //##Specifying Parser
+  "parser": "babel-eslint",
+  //##Specifying Parser Options
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "globalReturn": true,
+      "jsx": true,
+      "modules": true
+    }
+  },
+  //Adding Shared Settings
+  //You can add settings object to ESLint configuration file and it will be supplied to every rule that will be executed.
+  "settings": {
+    "ecmascript": 6,
+    "jsx": true
+  },
+  "extends": "eslint:recommended",
+  "root": true,
+  // ESLint will stop looking in parent folders once it finds a configuration with "root": true.
+  //##Specifying Environments
+  //An environment defines global variables that are predefined.
+  "env": {
+    "browser": true, // browser global variables
+    "node": true, // Node.js global variables and Node.js-specific rules
+    "es6": true, // ECMAScript 6
+    "jquery": true,
+    "mocha": true   // adds all of the Mocha testing global variables
+    //    "jasmine": true, //adds all of the Jasmine testing global variables for version 1.3 and 2.0.
+    //    "jest": true, //Jest global variables.
+    //    "qunit": true //QUnit global variables.
+  },
+  //##Specifying Globals
+  //为了设置全局变量时不报错，true为可重写，false为不可重写
+  //Set each global variable name equal to true to allow the variable to be overwritten or false to disallow overwriting.
+  "globals": {
+    "jQuery": true,
+    "$": true,
+    "_": true
+  },
+  //##Configuring Rules
+  // 结合Google的eslint--> https://github.com/google/eslint-config-google/blob/master/index.js
+  //  "off" or 0 - turn the rule off
+  //  "warn" or 1 - turn the rule on as a warning (doesn’t affect exit code)
+  //  "error" or 2 - turn the rule on as an error (exit code is 1 when triggered)
+  "rules": {
+    // Possible Errors:recommended
+    "no-cond-assign": 0, //禁止条件表达式中出现赋值操作符
+    "no-console": 0,
+    "valid-jsdoc": [
+      0, {
+        //使用JS-Doc
+        "requireParamDescription": false, //允许在参数标签缺少描述
+        "requireReturnDescription": false, //允许在返回标签缺少描述
+        "requireReturn": false, //不要求使用一个返回标签
+        "prefer": {"returns": "return"}//使用@return而不是@returns
+      }
+    ],
+    // Best Practices
+    "class-methods-use-this": 1, //强制类的方法中使用this
+    "curly": [1, "multi-line"], //单行可以不强制大括号
+    "guard-for-in": 2, //强制for-in中有一个if
+    "no-alert": 1, //alert、confirm 和 prompt
+    "no-caller": 1, //arguments.caller 或 arguments.callee
+    "no-div-regex": 2, //禁止使用看起来像除法的正则表达式
+    "no-else-return": 1, //禁止 if 语句中 return 语句之后有 else 块
+    "no-eval": 1, //禁用 eval()
+    "no-extend-native": 2, //禁止扩展原生类型
+    "no-extra-bind": 1, //禁止不必要的 .bind() 调用
+    "no-global-assign": 2, //禁止赋值给原生对象或只读的全局变量
+    "no-invalid-this": 2, //禁止 this 关键字出现在类和类对象之外
+    "no-iterator": 1, //禁用 __iterator__ 属性
+    "no-new-wrappers": 2, //禁止对 String，Number 和 Boolean 使用 new 操作符
+    "no-with": 2, //禁用 with 语句
+    "no-throw-literal": 1, //禁止抛出异常字面量
+    "radix": [2, "always"], //强制在parseInt()使用基数参数
+    "vars-on-top": 1, //要求所有的 var 声明出现在它们所在的作用域顶部
+    //Variables
+    "no-label-var": 1, //不允许标签与变量同名
+    "no-shadow-restricted-names": 2, //禁止覆盖受限制的标识符
+    "no-undefined": 2, //禁止将 undefined 作为标识符
+    "no-unused-vars": [2, {"args": "none"}], //禁止出现未使用过的变量
+    "no-use-before-define": [2, {"functions": false, "classes": true}],
+    //禁止定义前使用
+    //Node.js and CommonJS
+    "global-require": 1, //要求 require() 出现在顶层模块作用域中
+    "no-mixed-requires": 1, //禁止混合常规变量声明和 require 调用
+    "no-new-require": 2, //禁止调用 require 时使用 new 操作符
+    "no-path-concat": 1, //禁止对 __dirname 和 __filename 进行字符串连接
+    "no-process-exit": 1, //禁用 process.exit()
+    "no-sync": 1, //禁用同步方法
+    //Stylistic Issues
+    "brace-style": [1, "1tbs", {"allowSingleLine": true}], //大括号风格要求
+    "camelcase": [2, {"properties": "never"}], //强制使用骆驼拼写法命名约定
+    "comma-dangle": 2, //要求或禁止末尾逗号
+    "func-names": 2, //要求或禁止使用命名的 function 表达式
+    "indent": [1, 2, {"SwitchCase": 1}], //强制使用一致的缩进
+    "linebreak-style": [1, "unix"], //强制使用一致的换行风格
+    "max-statements-per-line": [1, {"max": 1}], //强制每一行中所允许的最大语句数量
+    "new-cap": 2, //要求构造函数首字母大写
+    "new-parens": 2, //要求调用无参构造函数时有圆括号
+    "newline-per-chained-call": 2, //要求方法链中每个调用都有一个换行符
+    "no-array-constructor": 2, //禁用 Array 构造函数
+    "no-bitwise": 1, //禁用按位运算符
+    "no-lonely-if": 1, //禁止 if 作为唯一的语句出现在 else 语句中
+    "no-new-object": 2, //禁用 Object 的构造函数
+    "no-whitespace-before-property": 2, //禁止属性前有空白
+    "object-curly-newline": 2, //强制大括号内换行符的一致性
+    "one-var-declaration-per-line": 2, //要求或禁止在变量声明周围换行
+    "quote-props": 2, //要求对象字面量属性名称用引号括起来
+    "quotes": [2, "double"], //强制使用一致的反勾号、双引号或单引号
+    "Require-jsdoc": 1, //要求使用 JSDoc 注释
+    "semi": 2, //要求或禁止使用分号而不是 ASI
+    //ECMAScript 6
+    "arrow-body-style": [2, "as-needed"], //要求箭头函数体使用大括号
+    "arrow-parens": [2, "always"], //要求箭头函数的参数使用圆括号
+    "no-confusing-arrow": [1, {"allowParens": true}],
+    //disallow arrow functions where they could be confused with comparisons
+    "no-useless-rename": 2,
+    //disallow renaming import, export, and destructured assignments to the same name
+    "no-var": 1, //要求使用 let 或 const 而不是 var
+    "prefer-const": 2 //要求使用 const 声明那些声明后不再被修改的变量
+  }
+}

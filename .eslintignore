@@ -1,0 +1,10 @@
+## eslint忽略的文件，使用 Globs 匹配
+/node_modules/*
+/bower_components/*
+test/*.js
+build/*.js
+dist/*.js
+**/*.ts.js
+**/*.coffee.js
+**/config/*.js
+
