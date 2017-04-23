@@ -4,6 +4,7 @@
 {
   //##Specifying Parser
   "parser": "babel-eslint",
+  "plugins": ["flowtype"],
   //##Specifying Parser Options
   "parserOptions": {
     "ecmaVersion": 6,
@@ -20,7 +21,7 @@
     "ecmascript": 6,
     "jsx": true
   },
-  "extends": "eslint:recommended",
+  "extends": ["eslint:recommended","plugin:flowtype/recommended"],
   "root": true,
   // ESLint will stop looking in parent folders once it finds a configuration with "root": true.
   //##Specifying Environments

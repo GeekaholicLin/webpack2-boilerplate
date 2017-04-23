@@ -258,7 +258,7 @@ const baseWebpackConfig = {
         use    : [{
           loader : "babel-loader",
           options: {
-            presets       : ["env", "stage-0"],
+            presets       : ["env", "stage-0", "flow"],
             plugins       : ["transform-runtime"],
             cacheDirectory: !isProd
           }
